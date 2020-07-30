@@ -1,0 +1,13 @@
+<scroll-view scroll-x scroll-y style="height:200px" bindscroll="scroll">
+<view style="width:200%;height:400px;background">
+dddddd</view>
+</scroll-view>
+
+<view>缩放模式测试</view>
+<image style="width:200px;height:200px;background-color:#eee;" mode="scaleToFill" src="/pages/images/a.jpg"></image>
+
+<view>裁剪模式测试</view>
+
+<image style="width:200px;height:200px;background-color:#eee;" mode="top" src="/pages/images/a.jpg"></image>
+
+<slider bindchanging="sliderChanging" show-value></slider>
