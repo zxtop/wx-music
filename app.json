@@ -5,6 +5,15 @@
     "pages/logs/logs"
 
   ],
+  "subpackages":[
+    {
+      "root":"pagesA",
+      "pages":[]
+    },{
+      "root":"pagesB",
+      "pages":[]
+    }
+  ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",

@@ -13,7 +13,7 @@ Page({
       id:1,
       title:'丢了你',
       singer:'井胧',
-      src:"/pages/audio/diuleni.mp3",
+      src:"/pagesA/audio/diuleni.mp3",
       coverImgUrl:"/pages/images/mh.jpg"
     },{
       id:2,
@@ -31,7 +31,7 @@ Page({
       id:4,
       title:'还是分开',
       singer:'张叶雷',
-      src:"/pages/audio/haishifenkai.mp3",
+      src:"/pagesB/audio/haishifenkai.mp3",
       coverImgUrl:"/pages/images/mh.jpg"
     }],
     state:'paused',
@@ -68,6 +68,13 @@ Page({
     this.setMusic(e.currentTarget.dataset.index);
     this.play();
   },
+  changePage:function(e){
+    // console.log(e.currentTarget.dataset)
+    this.setData({
+      tab:e.currentTarget.dataset.page,
+      item:e.currentTarget.dataset.page
+    })
+  },
   onReady:function(){
     let _that = this;
     //自动选择播放列表中的第1个曲目
@@ -84,8 +91,11 @@ Page({
     })
 
     //自动更新播放进度
-    this.audioCtx.onPlay(function(){})
+    this.audioCtx.onPlay(function(){
+        console.log("开始")
+    })
     this.audioCtx.onTimeUpdate(function(){
+      console.log("监测。。。。")
       _that.setData({
         'play.duration':formatTime(_that.audioCtx.duration),
         'play.currentTime':formatTime(_that.audioCtx.currentTime),
@@ -93,8 +103,13 @@ Page({
       })
     })
 
+    this.audioCtx.onStop(function(){
+      console.log("停止。。。。")
+    })
+    console.log(this.audioCtx)
+
     //默认选择第1曲
-    this.setMusic(0);
+    this.setMusic(2);
 
     //格式化时间
     function formatTime(time){
@@ -137,32 +152,8 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    
+
   },
   getUserInfo: function(e) {
     console.log(e)

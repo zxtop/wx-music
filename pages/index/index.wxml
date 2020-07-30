@@ -40,7 +40,7 @@
     <view class="player-controls">
 
       <!-- 切换到播放列表 -->
-      <image style="width:15px;height:20px" src="/pages/images/list.png" bindtap="changePage" data-page="2"></image>
+      <image style="width:20px;height:20px" src="/pages/images/list.png" bindtap="changePage" data-page="2"></image>
 
       <!-- 播放 -->
       <image wx:if="{{state == 'paused'}}" bindtap="play" style="width:20px;height:20px" src="/pages/images/bf.png"></image>
